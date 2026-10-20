@@ -1,35 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WallpaperLK 🔥 - 4K HD Wallpapers Sri Lanka</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">WallpaperLK <span>🔥</span></div>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="BMW, Anime, Nature...">
+    <button onclick="searchWall()">🔍</button>
+  </div>
+  <a href="admin.html" class="admin-btn">📤</a>
+</header>
+
+<div class="trending-bar">🔥 TRENDING: <span onclick="filterCat('car')">Supra</span> <span onclick="filterCat('anime')">Naruto</span> <span onclick="filterCat('nature')">Mountain</span> <span onclick="filterCat('dark')">Amoled</span></div>
+
+<nav id="cats">
+  <button class="active" onclick="filterCat('all')">🔥 All</button>
+  <button onclick="filterCat('car')">🚗 Cars</button>
+  <button onclick="filterCat('nature')">🏔️ Nature</button>
+  <button onclick="filterCat('anime')">🌸 Anime</button>
+  <button onclick="filterCat('aesthetic')">💜 Aesthetic</button>
+  <button onclick="filterCat('dark')">🖤 Dark</button>
+  <button onclick="filterCat('girl')">✨ Girls</button>
+</nav>
+
+<div id="gallery"></div>
+<div id="loader">Loading 100+ wallpapers... 🔥</div>
+
 <div id="modal" onclick="closeModal()">
   <div id="modal-content" onclick="event.stopPropagation()">
     <span id="close" onclick="closeModal()">✕</span>
-    <div style="position:relative">
+    <div class="modal-img-wrap">
       <img id="modal-img" src="" crossorigin="anonymous">
-      <div style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700;">WallpaperLK.lk</div>
+      <div class="wm-badge">WallpaperLK.lk</div>
     </div>
     <div class="modal-info">
-      <h3 id="modal-title">WallpaperLK 4K HD</h3>
-      <p>👁️ <span id="views">1.2k</span> • ❤️ <span id="likes">340</span> • 📥 <span id="downs">890</span> • 🇱🇰 Sri Lanka #1</p>
-      
-      <div style="background:#1a1a1a;border-radius:12px;padding:12px;margin:10px 0">
-        <p style="font-size:12px;font-weight:700;margin-bottom:8px">📥 DOWNLOAD OPTIONS:</p>
-        <div class="modal-btns" style="flex-direction:column">
-          <a id="download-btn" href="" download target="_blank" style="background:#fff;color:#000">📥 Download 4K Original (No Watermark)</a>
-          <a id="download-wm-btn" href="#" onclick="downloadWithWatermark(event)" style="background:#ff3d00;color:#fff">💎 Download with Watermark (Viral)</a>
-          <div style="display:flex;gap:8px">
-            <button onclick="shareWall()" style="flex:1">📤 Share</button>
-            <button onclick="likeWall()" style="flex:1">❤️ Like</button>
-          </div>
-        </div>
+      <h3>WallpaperLK 4K HD</h3>
+      <p class="stats">👁️ <span id="views">1.2k</span> • ❤️ <span id="likes">340</span> • 📥 <span id="downs">890</span> • 🇱🇰 #1</p>
+      <a id="download-btn" href="" target="_blank" class="dl-btn primary">📥 Download 4K Original</a>
+      <a id="download-wm-btn" href="#" onclick="downloadWithWatermark(event)" class="dl-btn secondary">💎 Download with Watermark</a>
+      <div class="small-btns">
+        <button onclick="shareWall()">📤 Share</button>
+        <button onclick="likeWall()">❤️ Like</button>
       </div>
-
-      <div style="background:#111;border:1px dashed #333;border-radius:12px;padding:10px;font-size:11px;color:#888">
-        📱 <b>Phone eke Wallpaper danna:</b><br>
-        1. Download karanna<br>
-        2. Gallery eke photo eka open karanna<br>
-        3. ⋮ Menu -> Set as Wallpaper
-      </div>
+      <div class="guide">📱 <b>Wallpaper danna:</b> Download → Gallery → ⋮ → Set as Wallpaper</div>
     </div>
   </div>
 </div>
 
-<!-- Hidden canvas for watermark -->
 <canvas id="wm-canvas" style="display:none"></canvas>
+<footer>© 2026 WallpaperLK.lk | Made in 🇱🇰 Sri Lanka</footer>
+<script src="script.js"></script>
+</body>
+    </html>
