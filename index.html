@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WallpaperLK 🔥 - 4K HD Wallpapers</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>WallpaperLK 🔥</h1>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search BMW, Anime, Nature... 🔍">
+    <button onclick="searchWall()">Search</button>
+  </div>
+</header>
+
+<nav id="cats">
+  <button class="active" onclick="filterCat('all')">All 🔥</button>
+  <button onclick="filterCat('car')">🚗 Cars</button>
+  <button onclick="filterCat('nature')">🏔️ Nature</button>
+  <button onclick="filterCat('anime')">🌸 Anime</button>
+  <button onclick="filterCat('aesthetic')">💜 Aesthetic</button>
+  <button onclick="filterCat('dark')">🖤 Dark</button>
+  <button onclick="filterCat('girl')">✨ Girl</button>
+</nav>
+
+<div id="loader">🔥 Wallpapers load wenawa... ⏳</div>
+<div id="gallery"></div>
+
+<!-- Full View Modal -->
+<div id="modal" onclick="closeModal()">
+  <div id="modal-content" onclick="event.stopPropagation()">
+    <span id="close" onclick="closeModal()">✕</span>
+    <img id="modal-img" src="">
+    <div class="modal-btns">
+      <a id="download-btn" href="" download target="_blank">📥 4K Download</a>
+      <button onclick="shareWall()">📤 Share</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
