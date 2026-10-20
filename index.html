@@ -1,46 +1,55 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WallpaperLK 🔥 - 4K HD Wallpapers</title>
+<title>WallpaperLK 🔥 - 4K HD Wallpapers Sri Lanka</title>
+<meta name="description" content="Best 4K HD Wallpapers - Cars, Anime, Nature, Aesthetic. Free Download!">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>WallpaperLK 🔥</h1>
+  <div class="logo">WallpaperLK <span>🔥</span></div>
   <div class="search-box">
-    <input type="text" id="search" placeholder="Search BMW, Anime, Nature... 🔍">
-    <button onclick="searchWall()">Search</button>
+    <input type="text" id="search" placeholder="BMW, Anime, Nature...">
+    <button onclick="searchWall()">🔍</button>
   </div>
+  <a href="admin.html" class="admin-btn">📤</a>
 </header>
 
+<div class="trending-bar">🔥 TRENDING: <span onclick="filterCat('car')">Supra</span> <span onclick="filterCat('anime')">Naruto</span> <span onclick="filterCat('nature')">Mountain</span> <span onclick="filterCat('dark')">Amoled</span></div>
+
 <nav id="cats">
-  <button class="active" onclick="filterCat('all')">All 🔥</button>
+  <button class="active" onclick="filterCat('all')">🔥 All</button>
   <button onclick="filterCat('car')">🚗 Cars</button>
   <button onclick="filterCat('nature')">🏔️ Nature</button>
   <button onclick="filterCat('anime')">🌸 Anime</button>
   <button onclick="filterCat('aesthetic')">💜 Aesthetic</button>
   <button onclick="filterCat('dark')">🖤 Dark</button>
-  <button onclick="filterCat('girl')">✨ Girl</button>
+  <button onclick="filterCat('girl')">✨ Girls</button>
 </nav>
 
-<div id="loader">🔥 Wallpapers load wenawa... ⏳</div>
 <div id="gallery"></div>
+<div id="loader">Loading... 🔥</div>
 
-<!-- Full View Modal -->
 <div id="modal" onclick="closeModal()">
   <div id="modal-content" onclick="event.stopPropagation()">
     <span id="close" onclick="closeModal()">✕</span>
     <img id="modal-img" src="">
-    <div class="modal-btns">
-      <a id="download-btn" href="" download target="_blank">📥 4K Download</a>
-      <button onclick="shareWall()">📤 Share</button>
+    <div class="modal-info">
+      <h3 id="modal-title">4K Wallpaper</h3>
+      <p>👁️ <span id="views">1.2k</span> views • ❤️ <span id="likes">340</span> likes • 📥 <span id="downs">890</span> downloads</p>
+      <div class="modal-btns">
+        <a id="download-btn" href="" download target="_blank">📥 Download 4K</a>
+        <button onclick="likeWall()">❤️ Like</button>
+        <button onclick="shareWall()">📤 Share</button>
+      </div>
     </div>
   </div>
 </div>
 
+<footer>© 2026 WallpaperLK.lk | Made in 🇱🇰 Sri Lanka | <a href="admin.html">Admin</a></footer>
 <script src="script.js"></script>
 </body>
-</html>
+  </html>
