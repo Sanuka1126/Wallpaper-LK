@@ -19,7 +19,7 @@
 <nav style="display:flex;gap:8px;overflow-x:auto;padding:10px;background:#0f0f0f;position:sticky;top:0;z-index:10">
   <button onclick="filterCat('all')" class="active">All 🔥</button>
   <button onclick="filterCat('car')">Cars 🚗</button>
-  <button onclick="filterCat('nature')">Nature 🏔️</button>
+  <button onclick="filterCat('nature')">Nature 🍃</button>
   <button onclick="filterCat('aesthetic')">Aesthetic 💜</button>
   <button onclick="filterCat('dark')">Dark 🖤</button>
 </nav>
@@ -27,14 +27,20 @@
 <div id="gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:10px"></div>
 <div id="loader" style="text-align:center;padding:20px;color:#888">🔥 Loading...</div>
 
-<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:100;justify-content:center;align-items:center;flex-direction:column">
-  <span onclick="closeModal()" style="position:absolute;top:20px;right:20px;color:white;font-size:30px;cursor:pointer">✕</span>
-  <img id="modal-img" style="max-width:95%;max-height:80%;border-radius:12px">
-  <a id="download-btn" href="" target="_blank" style="background:#6c5ce7;color:white;padding:10px 20px;border-radius:20px;text-decoration:none;margin-top:10px">⬇️ Download 4K</a>
+<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:100;justify-content:center;align-items:center;flex-direction:column;padding:15px">
+  <span onclick="closeModal()" style="position:absolute;top:15px;right:20px;color:white;font-size:32px;cursor:pointer;z-index:101">✕</span>
+  <img id="modal-img" style="max-width:95%;max-height:65%;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.8)">
+  <p style="color:#aaa;margin:12px 0;font-size:14px">👁 <span id="views">1.2k</span> &nbsp; ❤️ <span id="likes">234</span> &nbsp; ⬇️ <span id="downs">890</span></p>
+  <a id="download-btn" href="" download target="_blank" style="background:#6c5ce7;color:white;padding:12px 24px;border-radius:25px;text-decoration:none;margin:5px;font-weight:bold;width:80%;text-align:center;max-width:300px">⬇️ Download Original 4K</a>
+  <a id="download-wm-btn" href="#" onclick="downloadWithWatermark(event)" style="background:linear-gradient(90deg,#00b894,#00cec9);color:white;padding:12px 24px;border-radius:25px;text-decoration:none;margin:5px;font-weight:bold;width:80%;text-align:center;max-width:300px">⬇️ Download with Watermark</a>
+  <div style="display:flex;gap:12px;margin-top:12px">
+    <button onclick="shareWall()" style="padding:8px 18px;border-radius:20px;border:none;background:#2d2d2d;color:white;cursor:pointer">📤 Share</button>
+    <button onclick="likeWall()" style="padding:8px 18px;border-radius:20px;border:none;background:#2d2d2d;color:white;cursor:pointer">❤️ Like</button>
+  </div>
 </div>
 
 <canvas id="wm-canvas" style="display:none"></canvas>
-<footer style="text-align:center;padding:20px;color:#666">© 2026 WallpaperLK.lk | Made by Sanuka🌸</footer>
+<footer style="text-align:center;padding:20px;color:#666">© 2026 WallpaperLK.lk | Made by Sanu💖🇱🇰</footer>
 <script src="script.js"></script>
 </body>
-      </html>
+  </html>
