@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - WallpaperLK</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:20px;text-align:center}
+#login{max-width:400px;margin:100px auto;background:#111;padding:30px;border-radius:16px}
+input{width:90%;padding:12px;margin:10px;border-radius:8px;border:none}
+button{padding:12px 25px;border-radius:25px;border:none;background:#ff3d00;color:#fff;font-weight:bold;cursor:pointer;margin:10px}
+#panel{display:none}
+.upload-box{border:2px dashed #333;border-radius:16px;padding:40px;margin:20px auto;max-width:600px}
+.upload-box.dragover{border-color:#ff3d00;background:#1a1a1a}
+.preview{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.preview div{position:relative}
+.preview img{width:150px;height:250px;object-fit:cover;border-radius:12px}
+.preview span{position:absolute;top:5px;right:5px;background:red;border-radius:50%;width:25px;height:25px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+select{padding:10px;border-radius:8px;background:#222;color:#fff;border:1px solid #333}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h2>🔒 WallpaperLK Admin</h2>
+  <p>Oya witharak!</p>
+  <input type="password" id="pass" placeholder="Password eka danna">
+  <button onclick="login()">Login</button>
+  <p style="font-size:12px;color:#666">Default password: sanuka123</p>
+</div>
+
+<div id="panel">
+  <h1>📤 Photo Upload - Oya Witharak!</h1>
+  <div>
+    Category: 
+    <select id="cat">
+      <option value="car">🚗 Cars</option>
+      <option value="nature">🏔️ Nature</option>
+      <option value="anime">🌸 Anime</option>
+      <option value="aesthetic">💜 Aesthetic</option>
+      <option value="girl">✨ Girl</option>
+      <option value="dark">🖤 Dark</option>
+    </select>
+  </div>
+
+  <div class="upload-box" id="drop">
+    <p>📸 Photos drag karanna or click karanna</p>
+    <input type="file" id="file" multiple accept="image/*" style="display:none">
+    <button onclick="document.getElementById('file').click()">Choose Photos</button>
+    <p style="font-size:12px;color:#888;margin-top:10px">Phone gallery eken select karanna puluwan</p>
+  </div>
+
+  <div class="preview" id="preview"></div>
+  
+  <button onclick="saveAll()" style="background:#25D366;padding:15px 30px;font-size:16px;margin-top:20px">💾 Website Ekata Danna</button>
+  <button onclick="clearAll()" style="background:#333">🗑️ Clear All</button>
+  <p id="status"></p>
+  <a href="index.html" style="color:#ff3d00">← Website eka balanna</a>
+</div>
+
+<script>
+const PASSWORD = "sanuka123"; // Oya password eka change karanna!
+let uploaded = JSON.parse(localStorage.getItem('myWallpapers') || '[]');
+
+function login(){
+  if(document.getElementById('pass').value===PASSWORD){
+    document.getElementById('login').style.display='none';
+    document.getElementById('panel').style.display='block';
+    renderPreview();
+  } else alert("Password waradi! 😅");
+}
+
+const drop = document.getElementById('drop');
+drop.addEventListener('click', ()=>document.getElementById('file').click());
+drop.addEventListener('dragover', e=>{e.preventDefault(); drop.classList.add('dragover')});
+drop.addEventListener('dragleave', ()=>drop.classList.remove('dragover'));
+drop.addEventListener('drop', e=>{e.preventDefault(); drop.classList.remove('dragover'); handleFiles(e.dataTransfer.files)});
+
+document.getElementById('file').addEventListener('change', e=>handleFiles(e.target.files));
+
+function handleFiles(files){
+  for(let file of files){
+    const reader = new FileReader();
+    reader.onload = e=>{
+      uploaded.push({
+        id: Date.now()+Math.random(),
+        src: e.target.result, // base64
+        cat: document.getElementById('cat').value,
+        name: file.name
+      });
+      renderPreview();
+      saveToStorage();
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function renderPreview(){
+  const div = document.getElementById('preview');
+  div.innerHTML = uploaded.map((w,i)=>`
+    <div>
+      <img src="${w.src}">
+      <span onclick="removeImg(${i})">✕</span>
+      <p style="font-size:10px">${w.cat.toUpperCase()}</p>
+    </div>
+  `).join('');
+  document.getElementById('status').innerText = `${uploaded.length} photos upload kala!`;
+}
+
+function removeImg(i){ uploaded.splice(i,1); saveToStorage(); renderPreview(); }
+function saveToStorage(){ localStorage.setItem('myWallpapers', JSON.stringify(uploaded)); }
+function clearAll(){ if(confirm("Okoma delete karanna da?")){ uploaded=[]; saveToStorage(); renderPreview(); } }
+
+function saveAll(){
+  saveToStorage();
+  alert(`✅ ${uploaded.length} photos save kala! Dan website eke balanna!`);
+  window.location.href="index.html";
+}
+</script>
+</body>
+  </html>
